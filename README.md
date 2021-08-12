@@ -2,13 +2,17 @@
 
 This is an ubuntu 20.04 based container using microsoft powershell wrapper for the Crowdstrike Powershell SDK PSFalcon.
 
+Container Build of PS Module:
+
+* https://github.com/CrowdStrike/psfalcon
+
 ## Quick Start
 
 Non-interactive usage:
-`docker run --rm -v $PWD/data:/data --workdir=/data shadowbq/powershell-crowdstrike <script or powershell command to run>`
+`docker run --rm -v $PWD/data:/data --workdir=/data shadowbq/psfalcon <script or powershell command to run>`
 
 Interactive Powershell prompt (./interactive):
-`docker run --rm -it -v $PWD/data:/data --workdir=/data shadowbq/powershell-crowdstrike '-i'`
+`docker run --rm -it -v $PWD/data:/data --workdir=/data shadowbq/psfalcon '-i'`
 
 ## Usage of PSFalcon Container
 
