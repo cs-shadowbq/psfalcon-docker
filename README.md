@@ -33,6 +33,8 @@ PS /> Get-Module -ListAvailable
 
 ModuleType Version    PreRelease Name                                PSEdition ExportedCommands
 ---------- -------    ---------- ----                                --------- ----------------
+Binary     1.1.0                 Microsoft.PowerShell.SecretManagem… Core      {Register-SecretVault, Unregister-SecretVault, Get-SecretVault, Set-SecretVaultDefault…}
+Binary     1.0.3                 Microsoft.PowerShell.SecretStore    Core      {Unlock-SecretStore, Set-SecretStorePassword, Get-SecretStoreConfiguration, Set-SecretStoreConfi…
 Script     2.0.8                 PSFalcon                            Core,Desk {Confirm-FalconDiscoverAwsAccess, Edit-FalconDiscoverAwsAccount, Get-FalconDiscoverAwsAccount, G…
 
     Directory: /opt/microsoft/powershell/7/Modules
