@@ -19,7 +19,7 @@ if [ "$PSFALCON" != "$latest_module_release" ]; then
     echo "****"
 fi
 
-git pull
+git pull origin main
 
 # bump version
 docker run --rm -v "$PWD":/app treeder/bump patch
@@ -33,8 +33,8 @@ echo "building version: $PSFALCON-$VERSION"
 git add -A
 git commit -m "version $PSFALCON-$VERSION"
 git tag -a "$PSFALCON-$VERSION" -m "version $PSFALCON-$VERSION"
-git push
-git push --tags
+git push origin main
+git push --tags origin main
 
 docker tag $USERNAME/$IMAGE:latest $USERNAME/$IMAGE:$PSFALCON-$VERSION
 
