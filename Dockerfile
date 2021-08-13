@@ -6,7 +6,11 @@ LABEL version="0.0.5"
 LABEL psfalcon="2.0.8"
 
 RUN apt-get update && apt-get upgrade -y
-RUN pwsh -Command "Install-Module PSFalcon -Scope CurrentUser -RequiredVersion 2.0.8 -Force"
+SHELL [ "pwsh", "-command" ]
+RUN Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
+RUN Install-Module Microsoft.PowerShell.SecretManagement, Microsoft.PowerShell.SecretStore
+RUN Register-SecretVault -Name CrowdStrikeSecretStore -ModuleName Microsoft.PowerShell.SecretStore
+RUN Install-Module PSFalcon -Scope CurrentUser -RequiredVersion 2.0.8 -Force
 
 WORKDIR /data
 

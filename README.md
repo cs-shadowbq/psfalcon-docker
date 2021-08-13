@@ -79,6 +79,53 @@ PS /> Get-FalconCCID
 AAAAAAAAAAAAAAAAAAAAAAAAAA-49
 ```
 
+### Authenticating using Microsoft.PowerShell.SecretStore
+
+This docker image has the new `Microsoft.PowerShell.SecretStore` embedded into the image for secure storage/retrieval of passwords.
+
+Additionally you can extend `Microsoft.PowerShell.SecretStore` to support:
+
+* [KeePass](https://www.powershellgallery.com/packages/SecretManagement.KeePass)
+* [LastPass](https://www.powershellgallery.com/packages/SecretManagement.LastPass)
+* [Hashicorp Vault](https://www.powershellgallery.com/packages/SecretManagement.Hashicorp.Vault.KV)
+* [KeyChain](https://www.powershellgallery.com/packages/SecretManagement.KeyChain)
+* [CredMan](https://www.powershellgallery.com/packages/SecretManagement.JustinGrote.CredMan)
+* [Azure KeyVault](https://www.powershellgallery.com/packages/Az.KeyVault)
+
+```powershell
+PS /data> Set-Secret -Name ClientId -Secret "xxxxxxxxxxxxxxxxxxx"
+Creating a new CrowdStrikeStore vault. A password is required by the current store configuration.
+Enter password:
+***********
+Enter password again for verification:
+***********
+
+PS /data> Set-Secret -Name ClientSecret -Secret "aaaaaaaaaaaaaaaaaaaaaaaaa"
+
+PS /data> Get-SecretVault
+
+Name             ModuleName                       IsDefaultVault
+----             ----------                       --------------
+CrowdStrikeStore Microsoft.PowerShell.SecretStore True
+
+PS /data> Get-SecretInfo
+
+Name         Type   VaultName
+----         ----   ---------
+ClientId     String CrowdStrikeStore
+ClientSecret String CrowdStrikeStore
+
+PS /data> Request-FalconToken -ClientId (Get-Secret -Name ClientId -AsPlainText) -ClientSecret  (Get-Secret -Name ClientSecret -AsPlainText) -Cloud us-1
+Vault CrowdStrikeStore requires a password.
+Enter password: *********
+PS /data> Test-FalconToken
+
+Token Hostname                    ClientId                         MemberCid
+----- --------                    --------                         ---------
+ True https://api.crowdstrike.com ddddddddddddddddddddddddddddd
+
+```
+
 ## Building & Publishing
 
 There a few files included in repo to assist with building and publishing the docker container.
