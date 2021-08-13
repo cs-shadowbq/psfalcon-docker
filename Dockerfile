@@ -2,7 +2,7 @@ FROM mcr.microsoft.com/powershell:ubuntu-20.04
 
 LABEL author="Scott MacGregor"
 LABEL maintainer="shadowbq@gmail.com"
-LABEL version="0.0.4"
+LABEL version="0.0.5"
 LABEL psfalcon="2.0.8"
 
 RUN apt-get update && apt-get upgrade -y
