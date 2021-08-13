@@ -131,6 +131,25 @@ Token Hostname                    ClientId                         MemberCid
 
 ```
 
+Using HashTables instead of multi-variables to handle multi-api credentials if necessary.
+
+```powershell
+PS /data> Import-Module -Name PSFalcon
+PS /data> Set-Secret -Name FalconApi -Secret @{ ClientId = 'aaaaaaaa'; ClientSecret = 'bbbbbbbb'; Cloud = 'us-1' }
+Creating a new CrowdStrikeSecretStore vault. A password is required by the current store configuration.
+Enter password:
+***********
+Enter password again for verification:
+***********
+PS /data> Get-Secret -Name 'FalconApi' -AsPlainText | ForEach-Object { Request-FalconToken @_ }
+PS /data> Test-FalconToken
+
+Token Hostname                    ClientId                         MemberCid
+----- --------                    --------                         ---------
+ True https://api.crowdstrike.com ddddddddddddddd
+
+ ```
+
 ## Building & Publishing
 
 There a few files included in repo to assist with building and publishing the docker container.
