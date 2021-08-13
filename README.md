@@ -1,7 +1,7 @@
 # README
 
-![CI Passing](https://github.com/cs-shadowbq/psfalcon-docker/actions/workflows/docker-image.yml/badge.svg)
-![Docker Image Version (latest semver)](https://img.shields.io/docker/v/shadowbq/psfalcon?label=Docker%20Image)
+[![CI Passing](https://github.com/cs-shadowbq/psfalcon-docker/actions/workflows/docker-image.yml/badge.svg)](https://github.com/cs-shadowbq/psfalcon-docker/actions/workflows/docker-image.yml)
+[![Docker Image Version (latest semver)](https://img.shields.io/docker/v/shadowbq/psfalcon?label=Docker%20Hub%20Image)](https://hub.docker.com/repository/docker/shadowbq/psfalcon)
 
 This is an ubuntu 20.04 based container using microsoft powershell wrapper for the Crowdstrike Powershell SDK PSFalcon.
 
