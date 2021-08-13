@@ -31,12 +31,12 @@ echo "building version: $PSFALCON-$VERSION"
 
 # tag it
 git add -A
-git commit -m "version $version"
-git tag -a "$version" -m "version $version"
+git commit -m "version $PSFALCON-$VERSION"
+git tag -a "$PSFALCON-$VERSION" -m "version $PSFALCON-$VERSION"
 git push
 git push --tags
 
-docker tag $USERNAME/$IMAGE:latest $USERNAME/$IMAGE:$version
+docker tag $USERNAME/$IMAGE:latest $USERNAME/$IMAGE:$PSFALCON-$VERSION
 
 
 # push it
