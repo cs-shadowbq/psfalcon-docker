@@ -1,5 +1,7 @@
 # README
 
+![CI Passing](https://github.com/cs-shadowbq/psfalcon-docker/actions/workflows/docker-image.yml/badge.svg)
+
 This is an ubuntu 20.04 based container using microsoft powershell wrapper for the Crowdstrike Powershell SDK PSFalcon.
 
 Container Build of PS Module:
