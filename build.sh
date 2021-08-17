@@ -20,8 +20,8 @@ function sed_i_wrapper(){
     fi
 }
 
-sed_i_wrapper -i "/LABEL version=/s/.*/LABEL version=\"${VERSION}\"/" ./Dockerfile
-sed_i_wrapper -i "/LABEL psfalcon=/s/.*/LABEL psfalcon=\"${PSFALCON}\"/" ./Dockerfile
+sed_i_wrapper -i "/LABEL org.opencontainers.image.version=/s/.*/LABEL org.opencontainers.image.version=\"${VERSION}\"/" ./Dockerfile
+sed_i_wrapper -i "/LABEL com.github.cs-shadowbq.psfalcon=/s/.*/LABEL com.github.cs-shadowbq.psfalcon=\"${PSFALCON}\"/" ./Dockerfile
 sed_i_wrapper -i "s/RequiredVersion [0-9\.]*/RequiredVersion ${PSFALCON}/" ./Dockerfile
 
 echo "building version: latest"
