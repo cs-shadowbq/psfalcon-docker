@@ -46,4 +46,4 @@ done
 
 
 echo "Tagging version (default ubuntu.20.04): latest"
-docker tag $USERNAME/$IMAGE:latest-"ubuntu.20.04" $USERNAME/$IMAGE:latest
+docker tag $USERNAME/$IMAGE:latest-ubuntu.20.04 $USERNAME/$IMAGE:latest
