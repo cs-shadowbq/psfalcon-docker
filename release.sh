@@ -36,9 +36,10 @@ git tag -a "$PSFALCON-$VERSION" -m "version $PSFALCON-$VERSION"
 git push origin main
 git push --tags origin main
 
-docker tag $USERNAME/$IMAGE:latest $USERNAME/$IMAGE:$PSFALCON-$VERSION
+# Show Current Images of this VERSION
+docker images shadowbq/psfalcon --filter "label=org.opencontainers.image.version=$VERSION"
+docker images shadowbq/psfalcon --filter "label=org.opencontainers.image.version=$VERSION" --format "{{.Tag}}" | awk 'BEGIN { FS = "-" } ; $1 == "latest" && NF > 1 {print $2}' | xargs -I {}  docker tag $USERNAME/$IMAGE:latest-{} $USERNAME/$IMAGE:$PSFALCON-$VERSION-{}
 
 
 # push it
-docker push $USERNAME/$IMAGE:latest
-docker push $USERNAME/$IMAGE:$PSFALCON-$VERSION
+docker images shadowbq/psfalcon --filter "label=org.opencontainers.image.version=$VERSION" --format "{{.Tag}}" | xargs -I {}  docker push $USERNAME/$IMAGE:{} 
