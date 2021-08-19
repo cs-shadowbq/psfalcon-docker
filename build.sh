@@ -31,7 +31,7 @@ docker_kv() {
 }
 
 
-bases=( Dockerfile Dockerfile.ubi8 )
+bases=( Dockerfile Dockerfile.ubi8 Dockerfile.alpine )
 for base in "${bases[@]}"
 do
     sed_i_wrapper -i "/LABEL org.opencontainers.image.version=/s/.*/LABEL org.opencontainers.image.version=\"${VERSION}\"/" "./$base"
