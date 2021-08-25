@@ -12,12 +12,16 @@ latest_module_release=$(get_latest_release 'crowdstrike/psfalcon')
 
 echo "Latest 'crowdstrike/psfalcon' Release: $latest_module_release"
 
+# strip 'v if included'
+clean_latest_module_release=$(echo "$latest_module_release" | sed 's/^[vV]//')
 
-if [ "$PSFALCON" != "$latest_module_release" ]; then
+if [ "$PSFALCON" != "$clean_latest_module_release" ]; then
     echo "****"
-    echo "WARNING: Not building using the latest 'crowdstrike/psfalcon' release."
+    echo "* LATEST: $clean_latest_module_release"
+    echo "* WARNING: Not building using the latest 'crowdstrike/psfalcon' release."
     echo "****"
 fi
+
 
 git pull origin main
 
