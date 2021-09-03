@@ -41,10 +41,14 @@ do
     sed_i_wrapper -i "s/RequiredVersion [0-9\.]*/RequiredVersion ${PSFALCON}/" "./$base"
 
     echo "building version: latest"
+    if [ "$base" == "Dockerfile" ]; then
+        base='Dockerfile.ubuntu.20.04'
+    fi
     ostarget=$(docker_kv "$base")
+
     docker build . --file "./$base" -t $USERNAME/$IMAGE:latest-"$ostarget" --build-arg IMAGE_CREATE_DATE="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
 
-    if [ "$base" == "ubuntu.20.04" ]; then
+    if [ "$ostarget" == "ubuntu.20.04" ]; then
         echo "Tagging version (default ubuntu.20.04): latest"
         docker tag $USERNAME/$IMAGE:latest-ubuntu.20.04 $USERNAME/$IMAGE:latest
     fi
