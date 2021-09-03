@@ -25,7 +25,7 @@ Always write a clear log message for your commits. One-line messages are fine fo
 
 Start reading our code and you'll get the hang of it. We optimize for readability:
 
-* We indent using two spaces (soft tabs)
+* We indent using four spaces (soft tabs)
 * We use Bash 3.x compliant, or wrappers for MacOS development.
 * Dockerfiles should use `org.opencontainers.image` complaint tags.
 * This is open source software. Consider the people who will read your code, and make it look nice for them. It's sort of like driving a car: Perhaps you love doing donuts when you're alone, but with passengers the goal is to make the ride as smooth as possible.

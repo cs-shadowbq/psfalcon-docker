@@ -4,8 +4,11 @@ set -ex
 source image.config
 VERSION=$(<./VERSION)
 
+default_bases=( Dockerfile.ubuntu.20.04 Dockerfile.ubi8 Dockerfile.alpine )
+bases=${1:-"${default_bases[@]}"}
+
 function is_gnu_sed(){
-  sed --version >/dev/null 2>&1
+    sed --version >/dev/null 2>&1
 }
 
 function sed_i_wrapper(){
@@ -26,12 +29,11 @@ docker_kv() {
         'Dockerfile.ubuntu.20.04') echo 'ubuntu.20.04';;
         'Dockerfile.ubi8') echo 'ubi8';;
         'Dockerfile.alpine') echo 'alpine';;
+        'Dockerfile.proxy') echo 'proxy';;
         *) echo '';;
     esac
 }
 
-
-bases=( Dockerfile Dockerfile.ubi8 Dockerfile.alpine )
 for base in "${bases[@]}"
 do
     sed_i_wrapper -i "/LABEL org.opencontainers.image.version=/s/.*/LABEL org.opencontainers.image.version=\"${VERSION}\"/" "./$base"
@@ -42,8 +44,12 @@ do
     ostarget=$(docker_kv "$base")
     docker build . --file "./$base" -t $USERNAME/$IMAGE:latest-"$ostarget" --build-arg IMAGE_CREATE_DATE="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
 
+    if [ "$base" == "ubuntu.20.04" ]; then
+        echo "Tagging version (default ubuntu.20.04): latest"
+        docker tag $USERNAME/$IMAGE:latest-ubuntu.20.04 $USERNAME/$IMAGE:latest
+    fi
+
 done
 
 
-echo "Tagging version (default ubuntu.20.04): latest"
-docker tag $USERNAME/$IMAGE:latest-ubuntu.20.04 $USERNAME/$IMAGE:latest
+

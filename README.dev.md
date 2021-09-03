@@ -12,7 +12,7 @@ There a few files included in repo to assist with building and publishing the do
 
 * `image.config` - simple file with configurations for building/publishing the image.
 * `test.sh` - Ensure your environment is ready to build/publish the docker image.
-* `build.sh` - Build the `latest` image based on `image.config`
+* `build.sh` - Build the `latest` image based on `image.config`. Build can take an argument with `Dockerfile name`.
 * `release.sh` - Build the `version` based on the `image.config` and publish the image to docker.hub.
 * `VERSION` - Current version of this container wrapper. (i.e. 0.0.2) The published container on docker.hub will have a paired version with psfalcon like (v1.0.8-0.0.2).
 

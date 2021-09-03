@@ -9,7 +9,9 @@ Name     Version HelpInfoUri
 PSFalcon 2.1.1   https://bk-cs.github.io/help/psfalcon/en-US/
 
 PS /tmp> foreach ($uri in $BorkedHelp.helpinfouri) {Invoke-WebRequest $uri}
-                                                                                                                                 StatusCode        : 200                                                                                                          StatusDescription : OK                                                                                                           Content           : <!doctype html>
+StatusCode        : 200
+StatusDescription : OK
+Content           : <!doctype html>
                     <title>help/psfalcon/en-US/</title>
 
 RawContent        : HTTP/1.1 200 OK

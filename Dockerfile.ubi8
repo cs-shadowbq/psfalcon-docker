@@ -26,7 +26,7 @@ RUN Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
 RUN Install-Module Microsoft.PowerShell.SecretManagement, Microsoft.PowerShell.SecretStore
 RUN Register-SecretVault -Name CrowdStrikeSecretStore -ModuleName Microsoft.PowerShell.SecretStore
 RUN Install-Module PSFalcon -Scope CurrentUser -RequiredVersion 2.1.1 -Force
-RUN Update-Help -Verbose -Force
+RUN Update-Help -Force
 
 WORKDIR /data
 

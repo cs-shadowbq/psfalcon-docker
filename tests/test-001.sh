@@ -14,14 +14,14 @@ if ! docker info >/dev/null 2>&1; then
     echo "Docker does not seem to be running, run it first and retry. Aborting."; exit 1
 fi
 
-if ! timeout -s SIGKILL 3s docker login index.docker.io >/dev/null 2>&1; then
+if ! timeout -s SIGKILL 3s docker login docker.io >/dev/null 2>&1; then
     echo "Login to Docker Hub and retry. Aborting."; exit 1
 fi
 
 get_latest_release() {
-  curl --silent "https://api.github.com/repos/$1/releases/latest" | # Get latest release from GitHub api
-    grep '"tag_name":' |                                            # Get tag line
-    sed -E 's/.*"([^"]+)".*/\1/'                                    # Pluck JSON value
+    curl --silent "https://api.github.com/repos/$1/releases/latest" | # Get latest release from GitHub api
+        grep '"tag_name":' |                                            # Get tag line
+        sed -E 's/.*"([^"]+)".*/\1/'                                    # Pluck JSON value
 }
 
 latest_module_release=$(get_latest_release 'crowdstrike/psfalcon')
