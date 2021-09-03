@@ -17,7 +17,7 @@ SHELL [ "pwsh", "-command" ]
 RUN Set-PSRepository -Name PSGallery -InstallationPolicy Trusted; \
     Install-Module Microsoft.PowerShell.SecretManagement, Microsoft.PowerShell.SecretStore; \
     Register-SecretVault -Name CrowdStrikeSecretStore -ModuleName Microsoft.PowerShell.SecretStore; \
-    Install-Module PSFalcon -Scope CurrentUser -RequiredVersion 2.1.1 -Force; \
+    Install-Module PSFalcon -Scope CurrentUser -RequiredVersion 2.1.2 -Force; \
     Update-Help -Force;
 
 WORKDIR /data
