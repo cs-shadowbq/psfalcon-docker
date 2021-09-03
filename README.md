@@ -33,13 +33,12 @@ PS /data> ./example.ps1
 ## Why does this effort exist?
 
 [PSFalcon](https://github.com/CrowdStrike/psfalcon) is a great tool to enable administrators and developers alike to learn PowerShell + CrowdStrike Falcon.  Users come from all
-backgrounds, and so does technology. This repository is designed to enable all platform users to utilize PSFalcon whether they are on Windows, macOS, Linux, or BSD systems. It's important 
-to understand the need to use powershell outside of the Microsoft Ecosystem. Being a cross-platform scripting language, PowerShell on Linux supports all of the commonly known commands from CMD and Linux's command line shells, and some users may feel more comfortable with a particular shell.
+backgrounds, and so does technology. This repository is designed to enable all platform users to utilize PSFalcon through containers whether they are on Windows, macOS, Linux, or BSD systems. It's important to understand the need to use PowerShell outside of the Microsoft Ecosystem. Being a cross-platform scripting language, PowerShell on Linux supports all of the commonly known commands from CMD and Linux's command line shells, and some users may feel more comfortable with a particular shell.  
 
-The Docker Hub Images that are published are not supported by CrowdStrike, and they are provided as-is. 
+The Docker Hub Images that are published are not supported by CrowdStrike, and they are provided as-is.  
 
-You may want to `clone` this repo and *rebuild the images* and publish them to your own image-repository. The reasons may be to trust only specific image-repositories, or to sign your builds. 
-Many different enterprises have separate requirements be it on prem, or in the cloud. I've included UBI8 for RedHat Enterprises, Ubuntu for Hackers, and Alpine for efficient workloads. 
+You may want to `clone` this repo and *rebuild the images* and publish them to your own image-repository. The reasons may be to trust only specific image-repositories, or to sign your builds.
+Many different enterprises have separate requirements be it on prem, or in the cloud. I've included UBI8 for RedHat Enterprises, Ubuntu for Hackers, and Alpine for efficient workloads.  
 
 Play. Clone. Build. I would highly recommend that!
 
