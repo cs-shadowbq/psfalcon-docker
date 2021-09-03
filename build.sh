@@ -5,7 +5,9 @@ source image.config
 VERSION=$(<./VERSION)
 
 default_bases=( Dockerfile.ubuntu.20.04 Dockerfile.ubi8 Dockerfile.alpine )
-bases=${1:-"${default_bases[@]}"}
+temp_bases=${1:-"${default_bases[@]}"}
+# Fix String to Array
+IFS=' ' read -r -a bases <<< "$temp_bases" 
 
 function is_gnu_sed(){
     sed --version >/dev/null 2>&1
