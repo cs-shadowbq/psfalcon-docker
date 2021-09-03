@@ -8,4 +8,4 @@ $https_proxy = $ALL_PROXY
 [system.net.webrequest]::defaultwebproxy = new-object system.net.webproxy($ALL_PROXY)
 [System.Net.Http.HttpClient]::DefaultProxy = New-Object System.Net.WebProxy($ALL_PROXY)
 [system.net.webrequest]::defaultwebproxy.BypassProxyOnLocal = $true
-[system.net.webrequest]::defaultwebproxy.BypassProxyOnLocal = $true
+[System.Net.Http.HttpClient]::DefaultProxy.BypassProxyOnLocal = $true
