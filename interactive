@@ -1,1 +1,4 @@
-docker run --rm -it -v $PWD/data:/data --workdir=/data shadowbq/psfalcon '-i'
+#!/usr/bin/env bash
+default_tag=latest
+TAG=${1:-$default_tag}   # Defaults to /latest
+docker run --rm -it --name psfalcon -v "$PWD/data":/data --workdir=/data "shadowbq/psfalcon:$TAG" '-i'

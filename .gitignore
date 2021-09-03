@@ -1,1 +1,7 @@
 .secret
+.mitmproxy
+proxy
+
+#exceptions
+!proxy/*.template
+!proxy/README.*

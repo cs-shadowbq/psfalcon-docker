@@ -24,6 +24,33 @@ Interactive Powershell prompt (./interactive):
 PS /data> ./example.ps1
 ```
 
+## PSFalcon 2.1.x+
+
+Use `Get-Help` modules as `--help` have become *obsolete*.
+
+```powershell
+PS /data> Get-Help Request-FalconToken
+
+NAME
+    Request-FalconToken
+
+SYNTAX
+    Request-FalconToken [[-ClientId] <string>] [[-ClientSecret] <string>] [[-Hostname] {https://api.crowdstrike.com |
+    https://api.us-2.crowdstrike.com | https://api.laggar.gcw.crowdstrike.com | https://api.eu-1.crowdstrike.com}]
+    [[-MemberCid] <string>] [<CommonParameters>]
+
+    Request-FalconToken [[-ClientId] <string>] [[-ClientSecret] <string>] [[-Cloud] {eu-1 | us-gov-1 | us-1 | us-2}]
+    [[-MemberCid] <string>] [<CommonParameters>]
+
+
+ALIASES
+    None
+
+
+REMARKS
+    Get-Help cannot find the Help files for this cmdlet on this computer. It is displaying only partial help.
+        -- To download and install Help files for the module that includes this cmdlet, use Update-Help.
+```        
 ### Validation of loading / Importing the PSFalcon Module
 
 ```powershell
@@ -149,13 +176,3 @@ Token Hostname                    ClientId                         MemberCid
  True https://api.crowdstrike.com ddddddddddddddd
 
  ```
-
-## Building & Publishing
-
-There a few files included in repo to assist with building and publishing the docker container.
-
-* `image.config` - simple file with configurations for building/publishing the image.
-* `test.sh` - Ensure your environment is ready to build/publish the docker image.
-* `build.sh` - Build the `latest` image based on `image.config`
-* `release.sh` - Build the `version` based on the `image.config` and publish the image to docker.hub.
-* `VERSION` - Current version of this container wrapper. (i.e. 0.0.2) The published container on docker.hub will have a paired version with psfalcon like (v1.0.8-0.0.2).

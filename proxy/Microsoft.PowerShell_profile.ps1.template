@@ -1,0 +1,11 @@
+$ALL_PROXY = 'http://<container-ip>:8080/'
+
+$HTTP_PROXY = $ALL_PROXY
+$HTTPS_PROXY = $ALL_PROXY
+$http_proxy = $ALL_PROXY
+$https_proxy = $ALL_PROXY
+
+[system.net.webrequest]::defaultwebproxy = new-object system.net.webproxy($ALL_PROXY)
+[System.Net.Http.HttpClient]::DefaultProxy = New-Object System.Net.WebProxy($ALL_PROXY)
+[system.net.webrequest]::defaultwebproxy.BypassProxyOnLocal = $true
+[system.net.webrequest]::defaultwebproxy.BypassProxyOnLocal = $true

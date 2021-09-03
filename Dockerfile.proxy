@@ -11,16 +11,24 @@ LABEL org.opencontainers.image.base.name="powershell:ubuntu-20.04"
 LABEL org.opencontainers.image.licenses="UNLICENSE" 
 LABEL org.opencontainers.image.version="0.0.8"
 LABEL org.opencontainers.image.created=$IMAGE_CREATE_DATE
-LABEL com.github.cs-shadowbq.psfalcon="2.0.8"
+LABEL com.github.cs-shadowbq.psfalcon="2.1.1"
 
 RUN apt-get update && apt-get upgrade -y
+RUN apt-get install iputils-ping -y
+COPY proxy/mitmproxy-ca-cert.cer /usr/local/share/ca-certificates/mitmproxy-ca-cert.crt
+RUN update-ca-certificates
+
 RUN chsh -s /usr/bin/pwsh
 
 SHELL [ "pwsh", "-command" ]
 RUN Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
 RUN Install-Module Microsoft.PowerShell.SecretManagement, Microsoft.PowerShell.SecretStore
 RUN Register-SecretVault -Name CrowdStrikeSecretStore -ModuleName Microsoft.PowerShell.SecretStore
-RUN Install-Module PSFalcon -Scope CurrentUser -RequiredVersion 2.0.8 -Force
+RUN Install-Module PSFalcon -Scope CurrentUser -RequiredVersion 2.1.1 -Force
+
+RUN mkdir -p /root/.config/powershell
+COPY proxy/Microsoft.PowerShell_profile.ps1 /root/.config/powershell/Microsoft.PowerShell_profile.ps1
+
 
 WORKDIR /data
 
