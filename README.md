@@ -1,13 +1,17 @@
-# README
+# README - PSFalcon Container
 
 [![CI Passing](https://github.com/cs-shadowbq/psfalcon-docker/actions/workflows/docker-image.yml/badge.svg)](https://github.com/cs-shadowbq/psfalcon-docker/actions/workflows/docker-image.yml)
-[![Docker Image Version (latest semver)](https://img.shields.io/docker/v/shadowbq/psfalcon?label=Docker%20Hub%20Image)](https://hub.docker.com/repository/docker/shadowbq/psfalcon)
+[![Docker Image Version (latest semver)](https://img.shields.io/docker/v/shadowbq/psfalcon?label=Docker%20Hub%20Image)](https://hub.docker.com/r/shadowbq/psfalcon)
 
-This is an ubuntu 20.04 based container using microsoft powershell wrapper for the Crowdstrike Powershell SDK PSFalcon.
+This is an multi-base repo with *ubuntu 20.04* as the default container using a microsoft powershell wrapper for the Crowdstrike Powershell SDK PSFalcon.
 
 Container Build of PS Module:
 
 * https://github.com/CrowdStrike/psfalcon
+
+Docker Hub
+
+* https://hub.docker.com/r/shadowbq/psfalcon
 
 ## Quick Start
 
@@ -23,6 +27,12 @@ Interactive Powershell prompt (./interactive):
 ./interactive
 PS /data> ./example.ps1
 ```
+
+## Developers
+
+* [README - Developers](README.dev.md) - Instructions on building the container.
+* [README - Contributing](CONTRIBUTING.md) - Instructions on bugs, and PRs.
+* [LICENSE](LICENSE) - The Unlicense
 
 ## PSFalcon 2.1.x+
 

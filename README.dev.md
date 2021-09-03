@@ -2,9 +2,9 @@
 
 This repo is designed for running the PowerShell PSFalcon Module in a Container with a Linux base.
 
-* Alpine  
-* UBI8
-* Ubuntu
+* Ubuntu - 20.04 - This is the *Default* Dockerfile and is used with `latest` tags. 
+* Alpine - Lightweight workload (3.x) (~250mb)
+* UBI8 - RedHat Official Universal Container Build (8.x)
 
 ## Building & Publishing
 
@@ -13,12 +13,16 @@ There a few files included in repo to assist with building and publishing the do
 * `image.config` - simple file with configurations for building/publishing the image.
 * `test.sh` - Ensure your environment is ready to build/publish the docker image.
 * `build.sh` - Build the `latest` image based on `image.config`. Build can take an argument with `Dockerfile name`.
-* `release.sh` - Build the `version` based on the `image.config` and publish the image to docker.hub.
+* `release.sh` - Build the `version` based on the `image.config` and publish the image to docker.hub. Can take argument `repush` if authentication fails.
 * `VERSION` - Current version of this container wrapper. (i.e. 0.0.2) The published container on docker.hub will have a paired version with psfalcon like (v1.0.8-0.0.2).
 
 * `interactive` - Allows for running the PSFalcon Container in interactive mode with an argument for the *tag* defaulted to `latest`.
 
-## Proxying the PSFalcon
+## Github Actions
+
+* `docker-image.yml` runs `build.sh Dockerfile` which defaults to Ubuntu 20.04 for the CI test.
+
+## Proxy PSFalcon
 
 [README - MITM Proxy](proxy/README.mitm.md) - Intercepting PSFalcon Container communications.
 
