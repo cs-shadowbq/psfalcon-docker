@@ -36,15 +36,16 @@ docker_kv() {
 
 for base in "${bases[@]}"
 do
-    sed_i_wrapper -i "/LABEL org.opencontainers.image.version=/s/.*/LABEL org.opencontainers.image.version=\"${VERSION}\"/" "./$base"
-    sed_i_wrapper -i "/LABEL com.github.cs-shadowbq.psfalcon=/s/.*/LABEL com.github.cs-shadowbq.psfalcon=\"${PSFALCON}\"/" "./$base"
-    sed_i_wrapper -i "s/RequiredVersion [0-9\.]*/RequiredVersion ${PSFALCON}/" "./$base"
 
     echo "building version: latest"
     if [ "$base" == "Dockerfile" ]; then
         base='Dockerfile.ubuntu.20.04'
     fi
     ostarget=$(docker_kv "$base")
+
+    sed_i_wrapper -i "/LABEL org.opencontainers.image.version=/s/.*/LABEL org.opencontainers.image.version=\"${VERSION}\"/" "./$base"
+    sed_i_wrapper -i "/LABEL com.github.cs-shadowbq.psfalcon=/s/.*/LABEL com.github.cs-shadowbq.psfalcon=\"${PSFALCON}\"/" "./$base"
+    sed_i_wrapper -i "s/RequiredVersion [0-9\.]*/RequiredVersion ${PSFALCON}/" "./$base"
 
     docker build . --file "./$base" -t $USERNAME/$IMAGE:latest-"$ostarget" --build-arg IMAGE_CREATE_DATE="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
 
