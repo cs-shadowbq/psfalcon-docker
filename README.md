@@ -5,6 +5,8 @@
 
 This is an multi-base repo with *ubuntu 20.04* as the default container using a microsoft powershell wrapper for the Crowdstrike Powershell SDK PSFalcon.
 
+`PSFalcon-Docker` is an open source project, not a formal CrowdStrike product, to assist users and developers to implement CrowdStrike's APIs within their application, or tools. As such it carries no formal support, express or implied.
+
 Container Build of PS Module:
 
 * https://github.com/CrowdStrike/psfalcon

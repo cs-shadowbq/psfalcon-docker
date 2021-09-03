@@ -1,5 +1,7 @@
 # README - DEVELOPER
 
+`PSFalcon-Docker` is an open source project, not a formal CrowdStrike product, to assist users and developers to implement CrowdStrike's APIs within their application, or tools. As such it carries no formal support, express or implied.
+
 This repo is designed for running the PowerShell PSFalcon Module in a Container with a Linux base.
 
 * Ubuntu - 20.04 - This is the *Default* Dockerfile and is used with `latest` tags. 
