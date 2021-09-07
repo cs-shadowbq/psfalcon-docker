@@ -4,7 +4,7 @@ Proxy Configurations - Explicit Proxy configurations are difficult to get PSM mo
 
 ***You must use the directive:  `[System.Net.Http.HttpClient]::DefaultProxy`.***
 
-* Reference: <https://stackoverflow.com/a/67588302>
+* References: <https://stackoverflow.com/a/67588302> | <https://docs.microsoft.com/en-us/dotnet/api/system.net.http.httpclient.defaultproxy?view=netcore-3.1>
 
 ## MITM Proxy
 
@@ -28,7 +28,7 @@ Ref: <https://wiki.wireshark.org/TLS?action=show&redirect=SSL#Using_the_.28Pre.2
 
 ## Creating the *PSFalcon Proxy Variant*
 
-The mitmproxy should be running prior to building the PSFalcon Proxy variant.
+The mitmproxy should be running prior to building the PSFalcon Proxy variant.  
 
 * You need the CERT file in the Proxy PSFalcon Variant that is created by mitmproxy for the SSL Trust.
 * You need the IP Address for the Proxy in the `Powershell_profile.ps1`.
@@ -51,14 +51,20 @@ $> docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' 
 
 ### Configure the PowerShell Profile
 
-The environment variables used for DefaultProxy initialization on Windows and Unix-based platforms are:
+The environment variables used for DefaultProxy initialization on Windows and Unix-based platforms are:  
 
-`HTTP_PROXY`: the proxy server used on HTTP requests.
-`HTTPS_PROXY`: the proxy server used on HTTPS requests.
-`ALL_PROXY`: the proxy server used on HTTP and/or HTTPS requests in case HTTP_PROXY and/or HTTPS_PROXY are not defined.
-`NO_PROXY`: a comma-separated list of hostnames that should be excluded from proxying.
+* `HTTP_PROXY`: the proxy server used on HTTP requests.
+* `HTTPS_PROXY`: the proxy server used on HTTPS requests.
+* `ALL_PROXY`: the proxy server used on HTTP and/or HTTPS requests in case HTTP_PROXY and/or HTTPS_PROXY are not defined.
+* `NO_PROXY`: a comma-separated list of hostnames that should be excluded from proxying.
 
-Change the `proxy\Microsoft.PowerShell_profile.ps1.template` to reflect the correct IP Address of the Proxy.
+Copy the Template `proxy\Microsoft.PowerShell_profile.ps1.template` to `proxy\Microsoft.PowerShell_profile.ps1`.  
+
+Edit the *profile.ps1* file so it reflects the correct IP Address of the Proxy.
+
+Basic - `$ALL_PROXY` variable: `$ALL_PROXY = 'http://<container-ip>:8080/'`.   
+Credentialed - `$ALL_PROXY` variable if needed: `http://username:password@<container-ip>:8080`.  
+
 
 ### Build the *PSFalcon Proxy Variant* 
 
