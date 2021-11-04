@@ -44,8 +44,8 @@ for base in "${bases[@]}"; do
     fi
     ostarget=$(docker_kv "$base")
 
-    sed_i_wrapper -i -E "s/(org.opencontainers.image.version=)(.*)(\ )/\1\"${VERSION}\"\3/" "./$base"
-    sed_i_wrapper -i -E "s/(com.github.cs-shadowbq.psfalcon=)(.*)(\ )/\1\"${PSFALCON}\"\3/" "./$base"
+    sed_i_wrapper -i -E "s/(org.opencontainers.image.version=)(.*\")/\1\"${VERSION}\"/" "./$base"
+    sed_i_wrapper -i -E "s/(com.github.cs-shadowbq.psfalcon=)(.*\")/\1\"${PSFALCON}\"/" "./$base"
     sed_i_wrapper -i "s/RequiredVersion [0-9\.]*/RequiredVersion ${PSFALCON}/" "./$base"
 
     docker build . --file "./$base" -t $USERNAME/$IMAGE:latest-"$ostarget" --build-arg IMAGE_CREATE_DATE="$(date -u +"%Y-%m-%dT%H:%M:%SZ")"

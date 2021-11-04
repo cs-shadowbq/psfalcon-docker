@@ -9,7 +9,7 @@ LABEL org.opencontainers.image.source="https://github.com/cs-shadowbq/psfalcon-d
 LABEL org.opencontainers.image.url="https://hub.docker.com/r/shadowbq/psfalcon"
 LABEL org.opencontainers.image.base.name="powershell:ubuntu-20.04"
 LABEL org.opencontainers.image.licenses="UNLICENSE" 
-LABEL org.opencontainers.image.version="0.1.2"
+LABEL org.opencontainers.image.version="0.1.4"
 LABEL org.opencontainers.image.created=$IMAGE_CREATE_DATE
 LABEL com.github.cs-shadowbq.psfalcon="2.1.2"
 

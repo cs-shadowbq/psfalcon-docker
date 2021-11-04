@@ -9,7 +9,7 @@ _push_images() {
 _bump() {
     # bump version
     VERSION=$(<./VERSION)
-    docker run --rm -it treeder/bump --input $VERSION bump > VERSION
+    docker run --rm -it treeder/bump --input $VERSION bump >VERSION
     VERSION=$(<./VERSION)
     echo "building version: $PSFALCON-$VERSION"
 }
@@ -60,6 +60,8 @@ if [ "$phase" == "all" ]; then
 
     # Show Current Images of this VERSION
     docker images shadowbq/psfalcon --filter "label=org.opencontainers.image.version=$VERSION"
+
+    # Create Docker tags '2.1.2-0.1.3-alpine' based on 'latest-OS' for release purposes
     docker images shadowbq/psfalcon --filter "label=org.opencontainers.image.version=$VERSION" --format "{{.Tag}}" | awk 'BEGIN { FS = "-" } ; $1 == "latest" && NF > 1 {print $2}' | xargs -I {} docker tag $USERNAME/$IMAGE:latest-{} $USERNAME/$IMAGE:$PSFALCON-$VERSION-{}
 
     # push it
