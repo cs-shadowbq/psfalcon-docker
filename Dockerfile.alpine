@@ -9,7 +9,7 @@ LABEL org.opencontainers.image.authors="Scott MacGregor <shadowbq@gmail.com>" \
     org.opencontainers.image.url="https://hub.docker.com/r/shadowbq/psfalcon" \
     org.opencontainers.image.base.name="powershell:alpine-3.12" \
     org.opencontainers.image.licenses="UNLICENSE" \
-    org.opencontainers.image.version="0.0.7" \
+    org.opencontainers.image.version="0.1.3" \
     org.opencontainers.image.created=$IMAGE_CREATE_DATE \
     com.github.cs-shadowbq.psfalcon="2.0.8"
 
