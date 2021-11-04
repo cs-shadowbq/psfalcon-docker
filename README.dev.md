@@ -8,6 +8,8 @@ This repo is designed for running the PowerShell PSFalcon Module in a Container 
 * Alpine - Lightweight workload (3.x) (~250mb)
 * UBI8 - RedHat Official Universal Container Build (8.x)
 
+Additional, and bump versions of the `mcr.microsoft.com` versions are availble by pulling `curl -L https://mcr.microsoft.com/v2/powershell/tags/list`
+
 ## Building & Publishing
 
 There a few files included in repo to assist with building and publishing the docker container.
